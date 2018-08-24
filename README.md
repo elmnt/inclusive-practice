@@ -1,6 +1,6 @@
 # sandbox
 
-A quick local setup to run a local server, and sandbox new ideas. Includes [tachyons-sass](link:https://www.npmjs.com/package/tachyons-sass).  
+A quick setup to run a local server, and sandbox new ideas. Includes [tachyons-sass](link:https://www.npmjs.com/package/tachyons-sass).  
 
 This uses npm to run everything. I built it to replaece my git-app-dist repo which did the same thing with Gulp.
 
