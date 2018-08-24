@@ -1,0 +1,9 @@
+# root level
+Thumbs.db
+.DS_Store
+*.sass-cache
+*.settings
+
+# project
+/node_modules
+/dist

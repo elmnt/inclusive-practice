@@ -1,0 +1,54 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git.com"
+  },
+  "config": {
+    "sc": "src/css/styles.css",
+    "dc": "dist/css/styles.css",
+    "sj": "src/js/app.js",
+    "si": "src/img/*",
+    "dj": "dist/js/",
+    "di": "dist/img/"
+  },
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o src/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r src/css/*",
+    "lint": "eslint src/js",
+    "uglify": "uglifyjs src/js/main.js -m -c -o src/js/app.js",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "npm run lint && npm run uglify",
+    "serve": "npm run build:css && npm run build:js && browser-sync src/ -w",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/main.js' -- npm run build:js",
+    "dev": "parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'",
+    "copy:css": "mkdir -p dist/css && copyfiles -u 2 src/css/styles.css dist/css",
+    "copy:js": "mkdir -p dist/js && copyfiles -u 2 src/js/app.js dist/js",
+    "copy:img": "mkdir -p dist/img && copyfiles -u 2 src/img/* dist/img",
+    "copy:html": "mkdir -p dist && copyfiles -u 1 src/*.html dist",
+    "ship": "npm run copy:css && npm run copy:js && npm run copy:img && npm run copy:html",
+    "clean": "rm -f src/css/*.css && rm -f src/js/app.js && rm -r dist",
+    "postinstall": "npm run dev"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.3",
+    "browser-sync": "^2.24.6",
+    "copyfiles": "^2.0.0",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "move-cli": "^1.2.0",
+    "node-sass": "^4.9.3",
+    "onchange": "^4.1.0",
+    "parallelshell": "^3.0.2",
+    "postcss-cli": "^6.0.0",
+    "tachyons-sass": "^4.9.3",
+    "uglify-js": "^3.4.8"
+  }
+}
