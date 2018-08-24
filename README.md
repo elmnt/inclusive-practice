@@ -7,7 +7,7 @@ This uses npm to run everything. I built it to replaece my git-app-dist repo whi
 ### Getting Started  
 
 1. `git clone git@github.com:elmnt/sandbox.git my-repo`
-2. `cd my repo`
+2. `cd my-repo`
 3. `npm install`
 
 The postinstall fires the `npm run dev` command. You'll be serving everything up from the src/ directory. When you're ready to build a production version:
