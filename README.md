@@ -14,5 +14,12 @@ The postinstall fires the `npm run dev` command. You'll be serving everything up
 1. `npm run ship`
 
 That's it. Any time you want to clean house and rebuild:
-1. `npm run clean && npm run dev`
+1. `npm run clean && npm run dev` 
 
+### Some helpful links 
+
+[tachyons.io/docs](http://tachyons.io/docs/) Read the Docs  
+[tachyons.pro](https://tachyons.pro) Practice your Tachyons sills  
+[tachyons tldr](https://tachyons-tldr.now.sh/#/classes) Quickly find a class name  
+[tachyons.io/components](https://tachyons.io/components/) Component library  
+[tachyons playground](http://abhirag.in/tachyons_css/) More Tachyons practice
