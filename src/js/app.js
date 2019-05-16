@@ -1,1 +1,0 @@
-function shizzle(z,e){return z+e}shizzle(1,2);

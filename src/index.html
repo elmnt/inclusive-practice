@@ -10,8 +10,6 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="/node_modules/prismjs/themnes/prism.css">
-    <link rel="stylesheet" href="/node_modules/prismjs/themnes/prism-twilight.css">
 </head>
 
 <style>
@@ -21,7 +19,7 @@ html {
 }
 @media (min-width: 1200px) {
     html {
-        font-size: 125%;
+        font-size: 112.5%;
     }
 }
 
@@ -35,16 +33,28 @@ The main element should not be used to wrap the entire DOM, just the main conten
 So this would be moved, with the inclusion of additional navigation elements.
 -->
 
-<div class="center tl w-100 mw7">
+<div class="center tl w-100 mw8">
 
     <h1 class="f1 lh-title">Inclusive Design Practice</h1>
-    <p class="f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a href="https://inclusive-components.design/" class="link underline hover-purple">Inclusive Components</a></p>
+    <p class="mb5 f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a href="https://inclusive-components.design/" class="link underline hover-purple">Inclusive Components</a>, using Tachyons for element styles.</p>
+
+    <section class="mb5">
+        <h1 class="f3 lh-title">Buttons</h1>
+        <p class="f5 lh-copy">Shown with an optional data-* attribute, and an aria label</p>
+        <div class="mv4">
+            <button data-action="upvote" aria-label="upvote" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button>
+        </div>
+        <pre class="f7 line-numbers"><code class="language-markup">&lt;button data-action="" aria-label="" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;&lt;Add to Cart&gt;&lt;/button&gt;</code></pre>
+    </section>
 
     <section>
-        <h1 class="f3 lh-title">Buttons</h1>
-        <p class="f5 lh-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <button data-action="upvote" aria-label="upvote" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button>
-        <pre><code class="language-html"><button data-action="upvote" aria-label="upvote" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button></code></pre>
+        <h1 class="mb4 f3 lh-title">Cutsom Elements and Shadow DOM</h1>
+        <h3>Toggle Button</h3>
+        <p class="f5 lh-copy">Source: <a class="link" href="https://codepen.io/heydon/pen/ZOqwqQ">https://codepen.io/heydon/pen/ZOqwqQ</a></p>
+        <div class="mv4">
+            <toggle-button class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Toggle Button</toggle-button>
+        </div>
+        <pre class="f7 line-numbers"><code class="language-markup">&lt;toggle-button class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;Toggle Button&lt;/toggle-button&gt;</code></pre>
     </section>
 
 </div>
@@ -52,7 +62,6 @@ So this would be moved, with the inclusion of additional navigation elements.
 </main>
 
 <script src="js/app.js"></script>
-<script src="../node_modules/prismjs/prism.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>

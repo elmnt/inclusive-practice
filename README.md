@@ -27,3 +27,7 @@ That's it. Any time you want to clean house and rebuild:
 [tachyons tldr](https://tachyons-tldr.now.sh/#/classes) Quickly find a class name  
 [tachyons.io/components](https://tachyons.io/components/) Component library  
 [tachyons playground](http://abhirag.in/tachyons_css/) More Tachyons practice
+
+### note
+
+Turned off js linting in the build:js script by removing 'npm run lint &&'
