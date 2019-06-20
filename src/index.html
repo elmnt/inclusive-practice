@@ -23,10 +23,27 @@ html {
     }
 }
 
+.code {
+    /*
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: .25em;
+    */
+    font-weight: normal;
+    color: maroon;
+}
+
 </style>
 
 <body class="sans-serif ma4 tc dark-gray">
+
+<header class="center tl w-100 mw8" role="banner">
+    <h1 class="f1 lh-title">Inclusive Design Practice</h1>
+    <p class="mb5 f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a class="link underline hover-purple" href="https://inclusive-components.design/">Inclusive Components</a>, using Tachyons for element styles.</p>    
+</header>
+
 <main id="main">
+
 <!-- 
 The id allows screen readers to skip directly to main content, with the inclusion of a target link.
 The main element should not be used to wrap the entire DOM, just the main content. 
@@ -35,27 +52,70 @@ So this would be moved, with the inclusion of additional navigation elements.
 
 <div class="center tl w-100 mw8">
 
-    <h1 class="f1 lh-title">Inclusive Design Practice</h1>
-    <p class="mb5 f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a href="https://inclusive-components.design/" class="link underline hover-purple">Inclusive Components</a>, using Tachyons for element styles.</p>
-
     <section class="mb5">
         <h1 class="f3 lh-title">Buttons</h1>
         <p class="f5 lh-copy">Shown with an optional data-* attribute, and an aria label</p>
         <div class="mv4">
-            <button data-action="upvote" aria-label="upvote" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button>
+            <button data-action="action" aria-label="label" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button>
         </div>
-        <pre class="f7 line-numbers"><code class="language-markup">&lt;button data-action="" aria-label="" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;&lt;Add to Cart&gt;&lt;/button&gt;</code></pre>
+        <pre class="f7 line-numbers"><code class="language-markup">&lt;button data-action="action" aria-label="label" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;Add to Cart&lt;/button&gt;</code></pre>
     </section>
 
-    <section>
+    <section class="mb5">
         <h1 class="mb4 f3 lh-title">Cutsom Elements and Shadow DOM</h1>
         <h3>Toggle Button</h3>
-        <p class="f5 lh-copy">Source: <a class="link" href="https://codepen.io/heydon/pen/ZOqwqQ">https://codepen.io/heydon/pen/ZOqwqQ</a></p>
+        <p class="f5 lh-copy">Source: <a class="link underline hover-purple" href="https://codepen.io/heydon/pen/ZOqwqQ">Inclusive toggle button on CodePen</a></p>
         <div class="mv4">
             <toggle-button class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Toggle Button</toggle-button>
         </div>
         <pre class="f7 line-numbers"><code class="language-markup">&lt;toggle-button class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;Toggle Button&lt;/toggle-button&gt;</code></pre>
     </section>
+
+    <section class="mb5">
+        <h1 class="mb4 f3 lh-title">Using <span class="code">aria-describedby</span> for current page context</h1>
+        <p class="f5 lh-copy b">A few notes:</p>
+        <p class="f5 lh-copy"><span class="code">aria-describedby</span> is a relationship attribute: it associates the described element with the descriptive element via <span class="code">id</span>. The description is the descriptive element’s text node.</p>
+        <p class="f5 lh-copy">The HTML5 <span class="code">hidden</span> attribute is used to hide the description both visually and from screen readers. It works like <span class="code">display: none;</span> but is syntactically neater. Despite being hidden, because it <em>has a relationship</em> to the link, the link still has access to “Current page” and it will be announced on focusing the link. (Note that Internet Explorer does not support <span class="code">hidden</span> at the time of writing, but you can force it to by adding <span class="code">[hidden] { display: none; }</span> to your style sheet.</p>
+        <p class="f5 lh-copy">Moving the <span class="code">aria-describedby="current"</span> attribute from one element to another between pages is easy enough, and it can be used as a styling hook just as a class might be: <span class="code">[aria-describedby="current"]</span>.
+        <p class="f5 lh-copy"><span class="b">Source:</span> <a href="https://books.apple.com/us/book/inclusive-design-patterns/id1166112409">Inclusive Design Patterns</a> by Heydon Pickering.</p>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about" aria-describedby="current">about</a></li>
+                <li><a href="/products">products</a></li>
+                <li><a href="/contact">contact us</a></li>
+                <li><a href="/login">login</a></li>
+            </ul>
+            <div hidden id="current">Current page</div>
+        </nav>
+    </section>
+
+    <section class="mb5">
+        <h1 class="mb4 f3 lh-title">Deep dive into lists</h1>
+        <p class="f5 lh-copy b">A few notes:</p>
+
+<ul class="list pl0">
+    <li>
+        <h3><span class="b">Featured:</span> Naked Man In Garage Forecourt <a href="/photographer/kenny-mulbarton">by <cite>Kenny Mulbarton</cite></a></h3>
+        <dl>
+            <dt>Size:</dt>
+            <dd>90cm × 30cm</dd>
+            <dt>Price:</dt>
+            <dd>€35.95</dd>
+            <dt>Rating:</dt>
+            <dd><img src="/images/rating_4_5.svg" alt="4 out of 5 stars icon">4 out of 5 stars</dd>
+        </dl>
+    </li>
+</ul>
+
+    </section>
+
+    
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 
 </div>
 
