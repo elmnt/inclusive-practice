@@ -24,13 +24,7 @@ html {
 }
 
 .code {
-    /*
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    padding: .25em;
-    */
-    font-weight: normal;
-    color: maroon;
+    color: green;
 }
 
 </style>
@@ -39,7 +33,7 @@ html {
 
 <header class="center tl w-100 mw8" role="banner">
     <h1 class="f1 lh-title">Inclusive Design Practice</h1>
-    <p class="mb5 f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a class="link underline hover-purple" href="https://inclusive-components.design/">Inclusive Components</a>, using Tachyons for element styles.</p>    
+    <p class="mb5 f5 lh-copy">This is a sandbox to play with Heydon Pickering's <a aria-label="Inclusive Components" class="link underline hover-purple" href="https://inclusive-components.design/">Inclusive Components</a>, using Tachyons for element styles.</p>    
 </header>
 
 <main id="main">
@@ -54,15 +48,15 @@ So this would be moved, with the inclusion of additional navigation elements.
 
     <section class="mb5">
         <h1 class="f3 lh-title">Buttons</h1>
-        <p class="f5 lh-copy">Shown with an optional data-* attribute, and an aria label</p>
+        <p class="f5 lh-copy">Shown with an optional data-* attribute, and a descriptive aria label. We can also add further description on the button itself, for screen readers, but hide it from view, using the Tachyons class: <code>.clip</code>.</p>
         <div class="mv4">
-            <button data-action="action" aria-label="label" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add to Cart</button>
+            <button data-action="action" aria-label="Add Product Name to Cart" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none">Add <span class="clip">Product Name</span> to Cart</button>
         </div>
-        <pre class="f7 line-numbers"><code class="language-markup">&lt;button data-action="action" aria-label="label" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;Add to Cart&lt;/button&gt;</code></pre>
+        <pre class="f7 line-numbers"><code class="language-markup">&lt;button data-action="action" aria-label="Add Product Name to Cart" class="link pointer pv3 ph4 f6 b bg-blue br-pill white b--none"&gt;Add &lt;span class="clip"&gt;Product Name&lt;/span&gt; to Cart&lt;/button&gt;</code></pre>
     </section>
 
     <section class="mb5">
-        <h1 class="mb4 f3 lh-title">Cutsom Elements and Shadow DOM</h1>
+        <h1 class="mb4 f3 lh-title">Custom Elements and Shadow DOM</h1>
         <h3>Toggle Button</h3>
         <p class="f5 lh-copy">Source: <a class="link underline hover-purple" href="https://codepen.io/heydon/pen/ZOqwqQ">Inclusive toggle button on CodePen</a></p>
         <div class="mv4">
@@ -75,6 +69,18 @@ So this would be moved, with the inclusion of additional navigation elements.
         <h1 class="mb4 f3 lh-title">Using <span class="code">aria-describedby</span> for current page context</h1>
         <p class="f5 lh-copy b">A few notes:</p>
         <p class="f5 lh-copy"><span class="code">aria-describedby</span> is a relationship attribute: it associates the described element with the descriptive element via <span class="code">id</span>. The description is the descriptive element’s text node.</p>
+
+        <div role="application" aria-labelledby="calendar" aria-describedby="info">
+            <h1 id="calendar">Calendar</h1>
+            <p id="info">This calendar shows the game schedule for the Boston Red Sox.</p>
+            <div role="grid">content</div>
+        </div>
+        <pre class="f7 line-numbers"><code class="language-markup">&lt;div role="application" aria-labelledby="calendar" aria-describedby="info"&gt;
+    &lt;h1 id="calendar"&gt;Calendar&lt;/h1&gt;
+    &lt;p id="info"&gt;This calendar shows the game schedule for the Boston Red Sox.&lt;/p&gt;
+    &lt;div role="grid"&gt;content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
         <p class="f5 lh-copy">The HTML5 <span class="code">hidden</span> attribute is used to hide the description both visually and from screen readers. It works like <span class="code">display: none;</span> but is syntactically neater. Despite being hidden, because it <em>has a relationship</em> to the link, the link still has access to “Current page” and it will be announced on focusing the link. (Note that Internet Explorer does not support <span class="code">hidden</span> at the time of writing, but you can force it to by adding <span class="code">[hidden] { display: none; }</span> to your style sheet.</p>
         <p class="f5 lh-copy">Moving the <span class="code">aria-describedby="current"</span> attribute from one element to another between pages is easy enough, and it can be used as a styling hook just as a class might be: <span class="code">[aria-describedby="current"]</span>.
         <p class="f5 lh-copy"><span class="b">Source:</span> <a href="https://books.apple.com/us/book/inclusive-design-patterns/id1166112409">Inclusive Design Patterns</a> by Heydon Pickering.</p>
@@ -91,26 +97,45 @@ So this would be moved, with the inclusion of additional navigation elements.
     </section>
 
     <section class="mb5">
-        <h1 class="mb4 f3 lh-title">Deep dive into lists</h1>
-        <p class="f5 lh-copy b">A few notes:</p>
-
-<ul class="list pl0">
-    <li>
-        <h3><span class="b">Featured:</span> Naked Man In Garage Forecourt <a href="/photographer/kenny-mulbarton">by <cite>Kenny Mulbarton</cite></a></h3>
-        <dl>
-            <dt>Size:</dt>
-            <dd>90cm × 30cm</dd>
-            <dt>Price:</dt>
-            <dd>€35.95</dd>
-            <dt>Rating:</dt>
-            <dd><img src="/images/rating_4_5.svg" alt="4 out of 5 stars icon">4 out of 5 stars</dd>
-        </dl>
-    </li>
-</ul>
-
+        <h1 class="mb4 f3 lh-title">Lists</h1>
+        <p class="f5 lh-copy b mb4">With an embedded description list</p>
+        <ul class="list pl0">
+            <li class="bb">
+                <h3 class="f5 lh-title"><span class="b">Featured:</span> Some Title Here <a href="#">by <cite>John Doe</cite></a></h3>
+                <dl>
+                    <div>
+                        <dt class="dib ml1">Size:</dt>
+                        <dd class="dib ml1">90cm × 30cm</dd>
+                    </div>
+                    <div>
+                        <dt class="dib ml1">Price:</dt>
+                        <dd class="dib ml1">$35.95</dd>
+                    </div>
+                    <div>
+                        <dt class="dib ml1">Rating:</dt>
+                        <dd class="dib ml1">4 out of 5 stars</dd>
+                    </div>
+                </dl>
+            </li>
+            <li class="bb">
+                    <h3 class="f5 lh-title"><span class="b">Featured:</span> Some Title Here <a href="#">by <cite>John Doe</cite></a></h3>
+                    <dl>
+                        <div>
+                            <dt class="dib ml1">Size:</dt>
+                            <dd class="dib ml1">90cm × 30cm</dd>
+                        </div>
+                        <div>
+                            <dt class="dib ml1">Price:</dt>
+                            <dd class="dib ml1">$35.95</dd>
+                        </div>
+                        <div>
+                            <dt class="dib ml1">Rating:</dt>
+                            <dd class="dib ml1">4 out of 5 stars</dd>
+                        </div>
+                    </dl>
+                </li>
+        </ul>
     </section>
-
-    
 
     <p>&nbsp;</p>
     <p>&nbsp;</p>
